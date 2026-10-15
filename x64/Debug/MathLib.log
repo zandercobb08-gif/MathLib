@@ -1,6 +1,2 @@
 ﻿  Main.cpp
-C:\Users\s269011\source\repos\MathForGames\MathLib\Vector2.h(25,20): error C2228: left of '.X' must have class/struct/union
-  (compiling source file 'Main.cpp')
-      C:\Users\s269011\source\repos\MathForGames\MathLib\Vector2.h(25,20):
-      type is 'float'
-  
+  MathLib.vcxproj -> C:\Users\s269011\source\repos\MathForGames\x64\Debug\MathLib.exe

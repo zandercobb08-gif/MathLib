@@ -22,13 +22,13 @@ namespace aie {
 		}
 		Vector2 operator *(float rhs) const {
 			Vector2 Sum;
-			Sum.X = X * rhs.X;
-			Sum.Y = Y * rhs.Y;
+			Sum.X = X * rhs;
+			Sum.Y = Y * rhs;
 		}
 		Vector2 operator /(float rhs) const {
 			Vector2 Sum;
-			Sum.X = X / rhs.X;
-			Sum.Y = Y / rhs.Y;
+			Sum.X = X / rhs;
+			Sum.Y = Y / rhs;
 		}
 		Vector2& operator +=(const Vector2& rhs) {
 
@@ -46,15 +46,15 @@ namespace aie {
 		}
 		Vector2& operator *=(float rhs) {
 
-			X *= rhs.X;
-			Y *= rhs.Y;
+			X *= rhs;
+			Y *= rhs;
 
 			return *this;
 		}
 		Vector2& operator /=(float rhs) {
 
-			X /= rhs.X;
-			Y /= rhs.Y;
+			X /= rhs;
+			Y /= rhs;
 
 			return *this;
 		}
