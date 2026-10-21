@@ -128,7 +128,7 @@
     <ClCompile Include="Vector3.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Matrice3.h" />
+    <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>

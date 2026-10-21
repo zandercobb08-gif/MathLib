@@ -17,7 +17,14 @@ namespace aie {
 		{
 
 		}
+		Matrix3(float M1, float M2, float M3, float M4, float M5, float M6, float M7, float M8, float M9) : M1{ 0 }, M2{ 0 }, M3{ 0 }, M4{ 0 }, M5{ 0 }, M6{ 0 }, M7{ 0 }, M8{ 0 }, M9{ 0 } 
+		{
 
+		}
+		Matrix3(float num[]) : M1{ num[0]}, M2{ num[1] }, M3{ num[2] }, M4{ num[3] }, M5{ num[4] }, M6{ num[5] }, M7{ num[6] }, M8{ num[7] }, M9{ num[8] }
+		{
+
+		}
 		static Matrix3 MakeIdentity()
 		{
 			Matrix3 Identity;
@@ -88,7 +95,16 @@ namespace aie {
 			return false;
 		}
 
-
+		Matrix3 Transposed() {
+			Matrix3 Mat;
+			Mat.M2 = Mat.M4;
+			Mat.M4 = Mat.M2;
+			Mat.M3 = Mat.M7;
+			Mat.M7 = Mat.M3;
+			Mat.M6 = Mat.M8;
+			Mat.M8 = Mat.M6;
+			return Mat;
+		}
 
 
 		bool operator != (const Matrix3& Rhs) const 
