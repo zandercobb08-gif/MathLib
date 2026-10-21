@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <iostream>
 namespace aie {
 	struct Vector2 {
 		union {
@@ -14,21 +15,25 @@ namespace aie {
 			Vector2 Sum;
 			Sum.X = X + rhs.X;
 			Sum.Y = Y + rhs.Y;
+			return Sum;
 		}
 		Vector2 operator -(const Vector2& rhs) const {
 			Vector2 Sum;
 			Sum.X = X - rhs.X;
 			Sum.Y = Y - rhs.Y;
+			return Sum;
 		}
 		Vector2 operator *(float rhs) const {
 			Vector2 Sum;
 			Sum.X = X * rhs;
 			Sum.Y = Y * rhs;
+			return Sum;
 		}
 		Vector2 operator /(float rhs) const {
 			Vector2 Sum;
 			Sum.X = X / rhs;
 			Sum.Y = Y / rhs;
+			return Sum;
 		}
 		Vector2& operator +=(const Vector2& rhs) {
 
@@ -68,7 +73,7 @@ namespace aie {
 			return X* Rhs.X + Y * Rhs.Y;
 		
 		}
-		bool operator ==(const Vector2& rhs) {
+		bool operator ==(const Vector2& rhs) const {
 			return X == rhs.X && Y == rhs.Y;
 		}
 		bool Equals(const Vector2& rhs, float tolerance = 0.0001f) const {
@@ -89,6 +94,7 @@ namespace aie {
 
 			Copy.X = X / Mag;
 			Copy.Y = Y / Mag;
+			return Copy;
 		}
 		void Normalize()
 		{
@@ -113,5 +119,13 @@ namespace aie {
 	inline Vector2 operator *(float Scalar, const Vector2& Vec)
 	{
 		return Vec * Scalar;
+	}
+	std::ostream& operator << (std::ostream& stream, const Vector2& vec) {
+		stream << vec.X << "," << vec.Y;
+		return stream;
+	}
+	std::wostream& operator << (std::wostream& stream, const Vector2& vec) {
+		stream << vec.X << "," << vec.Y;
+		return stream;
 	}
 }
