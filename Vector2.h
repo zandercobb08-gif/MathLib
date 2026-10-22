@@ -120,11 +120,11 @@ namespace aie {
 	{
 		return Vec * Scalar;
 	}
-	std::ostream& operator << (std::ostream& stream, const Vector2& vec) {
+	inline std::ostream& operator << (std::ostream& stream, const Vector2& vec) {
 		stream << vec.X << "," << vec.Y;
 		return stream;
 	}
-	std::wostream& operator << (std::wostream& stream, const Vector2& vec) {
+	inline std::wostream& operator << (std::wostream& stream, const Vector2& vec) {
 		stream << vec.X << "," << vec.Y;
 		return stream;
 	}

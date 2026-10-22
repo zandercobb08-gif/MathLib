@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+#include <iostream>
 namespace aie {
 	struct Vector3 {
 		union {
@@ -29,5 +31,12 @@ namespace aie {
 			return XDelta < tolerance && YDelta < tolerance && ZDelta < tolerance;
 		}
 	};
-
+	inline std::ostream& operator << (std::ostream& stream, const Vector3& vec) {
+		stream << vec.X << "," << vec.Y << "," << vec.Z;
+		return stream;
+	}
+	inline std::wostream& operator << (std::wostream& stream, const Vector3& vec) {
+		stream << vec.X << "," << vec.Y << "," << vec.Z;
+		return stream;
+	}
 }

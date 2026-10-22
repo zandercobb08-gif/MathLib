@@ -1,5 +1,3 @@
 ﻿  Main.cpp
 C:\Users\s269011\source\repos\MathForGames\MathLib\Main.cpp(4,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Vector3.h
-  Generating Code...
   MathLib.vcxproj -> C:\Users\s269011\source\repos\MathForGames\x64\Debug\MathLib.exe

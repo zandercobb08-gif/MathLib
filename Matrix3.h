@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector3.h"
-#include <cmath>
+
+
 namespace aie {
 	struct Matrix3
 	{
@@ -17,10 +18,13 @@ namespace aie {
 		{
 
 		}
-		Matrix3(float M1, float M2, float M3, float M4, float M5, float M6, float M7, float M8, float M9) : M1{ 0 }, M2{ 0 }, M3{ 0 }, M4{ 0 }, M5{ 0 }, M6{ 0 }, M7{ 0 }, M8{ 0 }, M9{ 0 } 
+
+		
+		Matrix3(float A1, float A2, float A3, float A4, float A5, float A6, float A7, float A8, float A9) : M1{ A1 }, M2{ A2 }, M3{ A3 }, M4{ A4 }, M5{ A5 }, M6{ A6 }, M7{ A7 }, M8{ A8 }, M9{ A9 } 
 		{
 
 		}
+		
 		Matrix3(float num[]) : M1{ num[0]}, M2{ num[1] }, M3{ num[2] }, M4{ num[3] }, M5{ num[4] }, M6{ num[5] }, M7{ num[6] }, M8{ num[7] }, M9{ num[8] }
 		{
 
@@ -34,7 +38,6 @@ namespace aie {
 
 			return Identity;
 		}
-
 		float& operator [](int Index)
 		{
 			return Data[Index];
@@ -44,10 +47,6 @@ namespace aie {
 			return Data[Index];
 		}
 		Matrix3 operator * (const Matrix3& Rhs) const
-		{
-		
-		}
-		Matrix3 operator *= (const Matrix3& Rhs) 
 		{
 			Matrix3 Product;
 			Product.M1 = M1 * Rhs.M1 + M4 * Rhs.M2 + M7 * Rhs.M3;
@@ -59,6 +58,31 @@ namespace aie {
 			Product.M3 = M3 * Rhs.M1 + M6 * Rhs.M2 + M9 * Rhs.M3;
 			Product.M6 = M3 * Rhs.M4 + M6 * Rhs.M5 + M9 * Rhs.M6;
 			Product.M9 = M3 * Rhs.M7 + M6 * Rhs.M8 + M9 * Rhs.M9;
+			return Product;
+		}
+		Matrix3 operator *= (Matrix3& Rhs) 
+		{
+			Matrix3 Mat;
+			Mat.M1 = M1 * Rhs.M1 + M4 * Rhs.M2 + M7 * Rhs.M3;
+			Mat.M4 = M1 * Rhs.M4 + M4 * Rhs.M5 + M7 * Rhs.M6;
+			Mat.M7 = M1 * Rhs.M7 + M4 * Rhs.M8 + M7 * Rhs.M9;
+			Mat.M2 = M2 * Rhs.M1 + M5 * Rhs.M2 + M8 * Rhs.M3;
+			Mat.M5 = M2 * Rhs.M4 + M5 * Rhs.M5 + M8 * Rhs.M6;
+			Mat.M8 = M2 * Rhs.M7 + M5 * Rhs.M8 + M8 * Rhs.M9;
+			Mat.M3 = M3 * Rhs.M1 + M6 * Rhs.M2 + M9 * Rhs.M3;
+			Mat.M6 = M3 * Rhs.M4 + M6 * Rhs.M5 + M9 * Rhs.M6;
+			Mat.M9 = M3 * Rhs.M7 + M6 * Rhs.M8 + M9 * Rhs.M9;
+			M1 = Mat.M1;
+			M2 = Mat.M2;
+			M3 = Mat.M3;
+			M4 = Mat.M4;
+			M5 = Mat.M5;
+			M6 = Mat.M6;
+			M7 = Mat.M7;
+			M8 = Mat.M8;
+			M9 = Mat.M9;
+
+			return *this;
 		}
 		Vector3 operator * (const Vector3& Rhs) const 
 		{
@@ -79,7 +103,6 @@ namespace aie {
 			}
 			return true;
 		}
-
 		bool Equals(const Matrix3& Rhs, float Talerance = 0.0001f) const
 		{
 
@@ -92,26 +115,25 @@ namespace aie {
 
 				}
 			}
-			return false;
+			return true;
 		}
-
 		Matrix3 Transposed() {
 			Matrix3 Mat;
-			Mat.M2 = Mat.M4;
-			Mat.M4 = Mat.M2;
-			Mat.M3 = Mat.M7;
-			Mat.M7 = Mat.M3;
-			Mat.M6 = Mat.M8;
-			Mat.M8 = Mat.M6;
+			Mat.M1 = M1;
+			Mat.M5 = M5;
+			Mat.M9 = M9;
+			Mat.M2 = M4;
+			Mat.M4 = M2;
+			Mat.M3 = M7;
+			Mat.M7 = M3;
+			Mat.M6 = M8;
+			Mat.M8 = M6;
 			return Mat;
 		}
-
-
 		bool operator != (const Matrix3& Rhs) const 
 		{
 			return !(*this == Rhs);
 		}
-
 		operator float* ()
 		{
 			return Data;
@@ -121,4 +143,12 @@ namespace aie {
 			return Data;
 		}
 	};
+	inline std::ostream& operator << (std::ostream& stream, const Matrix3& mat) {
+		stream << mat.M1 << "," << mat.M2 << "," << mat.M3 << "," << mat.M4 << "," << mat.M5 << "," << mat.M6 << "," << mat.M7 << "," << mat.M8 << "," << mat.M9;
+		return stream;
+	}
+	inline std::wostream& operator << (std::wostream& stream, const Matrix3& mat) {
+		stream << mat.M1 << "," << mat.M2 << "," << mat.M3 << "," << mat.M4 << "," << mat.M5 << "," << mat.M6 << "," << mat.M7 << "," << mat.M8 << "," << mat.M9;
+		return stream;
+	}
 	}
